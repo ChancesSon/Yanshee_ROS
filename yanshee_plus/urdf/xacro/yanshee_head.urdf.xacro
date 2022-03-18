@@ -1,0 +1,39 @@
+<robot name="head" xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:property name="mesh_file" value="package://yanshee/meshes/head_Link.STL" />
+
+  <xacro:property name="joint_offset_x" value="0" />
+  <xacro:property name="joint_offset_y" value="-0.00014945" />
+  <xacro:property name="joint_offset_z" value="0.06" />
+
+  <xacro:property name="joint_axis_x" value="-0.00044678" />
+  <xacro:property name="joint_axis_y" value="-0.0035302" />
+  <xacro:property name="joint_axis_z" value="0.99999" />
+
+  <xacro:property name="joint_limit_lower" value="-0.78" />
+  <xacro:property name="joint_limit_upper" value="0.78" />
+  <xacro:property name="joint_limit_effort" value="1.0" />
+  <xacro:property name="joint_limit_velocity" value="10" />
+
+
+
+  <link name="head_Link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="${mesh_file}" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="head_joint" type="revolute">
+    <origin xyz="${joint_offset_x} ${joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="head_Link" />
+    <axis xyz="${joint_axis_x} ${joint_axis_y} ${joint_axis_z}" />
+    <limit lower="${joint_limit_lower}" upper="${joint_limit_upper}" effort="${joint_limit_effort}" velocity="${joint_limit_velocity}" />
+  </joint>
+
+</robot>

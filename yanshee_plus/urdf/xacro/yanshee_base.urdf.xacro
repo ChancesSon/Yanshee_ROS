@@ -1,0 +1,32 @@
+<robot name="base" xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:property name="mesh_file" value="package://yanshee/meshes/base_link.STL" />
+  <xacro:property name="joint_offset_z" value="0.3" />
+
+  <link name='world'>
+    <visual>
+      <geometry>   
+        <sphere radius="0.001" />
+      </geometry>  
+    </visual>
+  </link>
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="${mesh_file}" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="world_to_base" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${joint_offset_z}"/>
+  </joint>
+
+
+</robot>

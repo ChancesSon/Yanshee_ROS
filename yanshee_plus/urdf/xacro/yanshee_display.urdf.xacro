@@ -1,0 +1,21 @@
+<robot name="yanshee" xmlns:xacro="http://wiki.ros.org/xacro">
+    <xacro:include filename="yanshee_base.urdf.xacro" />
+    <xacro:include filename="yanshee_head.urdf.xacro" />
+    <xacro:include filename="yanshee_left_arm1.urdf.xacro" />
+    <xacro:include filename="yanshee_left_arm2.urdf.xacro" />
+    <xacro:include filename="yanshee_left_arm3.urdf.xacro" />
+    <xacro:include filename="yanshee_right_arm1.urdf.xacro" />
+    <xacro:include filename="yanshee_right_arm2.urdf.xacro" />
+    <xacro:include filename="yanshee_right_arm3.urdf.xacro" />
+    <xacro:include filename="yanshee_left_leg1.urdf.xacro" />
+    <xacro:include filename="yanshee_left_leg2.urdf.xacro" />
+    <xacro:include filename="yanshee_left_leg3.urdf.xacro" />
+    <xacro:include filename="yanshee_left_leg4.urdf.xacro" />
+    <xacro:include filename="yanshee_left_leg5.urdf.xacro" />
+    <xacro:include filename="yanshee_right_leg1.urdf.xacro" />
+    <xacro:include filename="yanshee_right_leg2.urdf.xacro" />
+    <xacro:include filename="yanshee_right_leg3.urdf.xacro" />
+    <xacro:include filename="yanshee_right_leg4.urdf.xacro" />
+    <xacro:include filename="yanshee_right_leg5.urdf.xacro" />
+</robot>
+

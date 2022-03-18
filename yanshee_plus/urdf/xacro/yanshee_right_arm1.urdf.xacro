@@ -1,0 +1,46 @@
+<robot name="right_arm1" xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:property name="mesh_file" value="package://yanshee/meshes/right_arm1_Link.STL" />
+
+  <xacro:property name="joint_offset_x" value="0.0030003" />
+  <xacro:property name="joint_offset_y" value="-0.077273" />
+  <xacro:property name="joint_offset_z" value="0.013316" />
+  <xacro:property name="joint_offset_rr" value="1.5708" />
+  <xacro:property name="joint_offset_rp" value="0" />
+  <xacro:property name="joint_offset_ry" value="0" />
+
+  <xacro:property name="parent_link" value="base_link" />
+  <xacro:property name="child_link" value="right_arm1_Link" />
+
+  <xacro:property name="joint_axis_x" value="0" />
+  <xacro:property name="joint_axis_y" value="0" />
+  <xacro:property name="joint_axis_z" value="1" />
+
+  <xacro:property name="joint_limit_lower" value="-1.58" />
+  <xacro:property name="joint_limit_upper" value="1.58" />
+  <xacro:property name="joint_limit_effort" value="1" />
+  <xacro:property name="joint_limit_velocity" value="10" />
+
+
+
+
+  <link name="right_arm1_Link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="${mesh_file}" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="right_arm1_joint" type="revolute">
+    <origin xyz="${joint_offset_x} ${joint_offset_y} ${joint_offset_z}" rpy="${joint_offset_rr} ${joint_offset_rp} ${joint_offset_ry}" />
+    <parent link="${parent_link}" />
+    <child link="${child_link}" />
+    <axis xyz="${joint_axis_x} ${joint_axis_y} ${joint_axis_z}" />
+    <limit lower="${joint_limit_lower}" upper="${joint_limit_upper}" effort="${joint_limit_effort}" velocity="${joint_limit_velocity}" />
+  </joint>
+
+</robot>
