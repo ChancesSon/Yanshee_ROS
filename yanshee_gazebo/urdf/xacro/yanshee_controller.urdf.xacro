@@ -1,0 +1,40 @@
+<robot name="controller" xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:macro name="coontroller_transmission" params="part_name">
+    <transmission name="${part_name}_tran">
+    	<type>transmission_interface/SimpleTransmission</type>
+    	<joint name="${part_name}_joint">
+      		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    	</joint>
+    	<actuator name="${part_name}_motor">
+      		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:coontroller_transmission part_name="head" />
+  <xacro:coontroller_transmission part_name="left_arm1" />
+  <xacro:coontroller_transmission part_name="left_arm2" />
+  <xacro:coontroller_transmission part_name="left_arm3" />
+  <xacro:coontroller_transmission part_name="right_arm1" />
+  <xacro:coontroller_transmission part_name="right_arm2" />
+  <xacro:coontroller_transmission part_name="right_arm3" />
+  <xacro:coontroller_transmission part_name="left_leg1" />
+  <xacro:coontroller_transmission part_name="left_leg2" />
+  <xacro:coontroller_transmission part_name="left_leg3" />
+  <xacro:coontroller_transmission part_name="left_leg4" />
+  <xacro:coontroller_transmission part_name="left_leg5" />
+  <xacro:coontroller_transmission part_name="right_leg1" />
+  <xacro:coontroller_transmission part_name="right_leg2" />
+  <xacro:coontroller_transmission part_name="right_leg3" />
+  <xacro:coontroller_transmission part_name="right_leg4" />
+  <xacro:coontroller_transmission part_name="right_leg5" />
+
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+      <robotNamespace>/yanshee</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>  
+
+</robot>

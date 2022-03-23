@@ -1,0 +1,67 @@
+<robot name="base" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:property name="part_name" value="base" />
+  <xacro:property name="interial_x" value="-0.00671487104263047" />
+  <xacro:property name="interial_y" value="-0.000225582019654342" />
+  <xacro:property name="interial_z" value="-0.0079919194119481" />
+
+  <xacro:property name="interial_mass" value="1.0296612030539" />
+
+  <xacro:property name="interial_ixx" value="0.00180022359518362" />
+  <xacro:property name="interial_ixy" value="1.1918387954471E-07" />
+  <xacro:property name="interial_ixz" value="-5.28660375448492E-05" />
+  <xacro:property name="interial_iyy" value="0.00176811056794777" />
+  <xacro:property name="interial_iyz" value="1.82106435044606E-06" />
+  <xacro:property name="interial_izz" value="0.00168298836267856" />
+  <xacro:property name="mesh_file" value="package://yanshee/meshes/base_link.STL" />
+  <xacro:property name="joint_offset_z" value="0.3" />
+
+  <link name='world'>
+    <visual>
+      <geometry>   
+        <sphere radius="0.001" />
+      </geometry>  
+    </visual>
+  </link>
+
+  <link name="${part_name}_link">
+    <inertial>
+      <origin xyz="${interial_x} ${interial_y} ${interial_z}" rpy="0 0 0" />
+      <mass value="${interial_mass}" />
+      <inertia
+        ixx="${interial_ixx}"
+        ixy="${interial_ixy}"
+        ixz="${interial_ixz}"
+        iyy="${interial_iyy}"
+        iyz="${interial_iyz}"
+        izz="${interial_izz}" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="${mesh_file}" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="${mesh_file}" />
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo reference="${part_name}_link">
+  </gazebo>
+
+  <joint name="${part_name}_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${joint_offset_z}"/>
+  </joint>
+  
+</robot>

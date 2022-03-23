@@ -1,0 +1,87 @@
+<robot name="right_leg1" xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:property name="part_name" value="right_leg1" />
+  <xacro:property name="origin_x" value="0.0218793806256354" />
+  <xacro:property name="origin_y" value="0.000461528344157129" />
+  <xacro:property name="origin_z" value="-0.00043732892343204" />
+  <xacro:property name="mass_value" value="0.0156559636636307" />
+
+
+  <xacro:property name="inertia_ixx" value="4.47155922610687E-06" />
+  <xacro:property name="inertia_ixy" value="-1.77585863984461E-07" />
+  <xacro:property name="inertia_ixz" value="-1.75175041214978E-07" />
+  <xacro:property name="inertia_iyy" value="4.61839887541924E-06" />
+  <xacro:property name="inertia_iyz" value="-3.15996181844891E-09" />
+  <xacro:property name="inertia_izz" value="4.6159043452499E-06" />
+
+  <xacro:property name="mesh_file" value="package://yanshee/meshes/right_leg1_Link.STL" />
+
+  <xacro:property name="joint_offset_x" value="-0.0091403" />
+  <xacro:property name="joint_offset_y" value="-0.028469" />
+  <xacro:property name="joint_offset_z" value="-0.066034" />
+  <xacro:property name="joint_offset_rr" value="-1.5708" />
+  <xacro:property name="joint_offset_rp" value="1.5708" />
+  <xacro:property name="joint_offset_ry" value="-1.5708" />
+
+  <xacro:property name="parent_link" value="base_link" />
+  <xacro:property name="child_link" value="right_leg1_Link" />
+
+  <xacro:property name="joint_axis_x" value="0" />
+  <xacro:property name="joint_axis_y" value="0" />
+  <xacro:property name="joint_axis_z" value="1" />
+
+  <xacro:property name="joint_limit_lower" value="-1.58" />
+  <xacro:property name="joint_limit_upper" value="1.58" />
+  <xacro:property name="joint_limit_effort" value="1" />
+  <xacro:property name="joint_limit_velocity" value="10" />
+
+
+
+
+
+  <link name="${part_name}_Link">
+    <inertial>
+      <origin xyz="${origin_x} ${origin_y} ${origin_z}" rpy="0 0 0" />
+      <mass value="${mass_value}" />
+      <inertia
+        ixx="${inertia_ixx}"
+        ixy="${inertia_ixy}"
+        ixz="${inertia_ixz}"
+        iyy="${inertia_iyy}"
+        iyz="${inertia_iyz}"
+        izz="${inertia_izz}" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="${mesh_file}" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="${mesh_file}" />
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo reference="${part_name}">
+  </gazebo>
+
+  <joint name="${part_name}_joint" type="revolute">
+    <origin xyz="${joint_offset_x} ${joint_offset_y} ${joint_offset_z}" rpy="${joint_offset_rr} ${joint_offset_rp} ${joint_offset_ry}" />
+    <parent link="${parent_link}" />
+    <child link="${child_link}" />
+    <axis xyz="${joint_axis_x} ${joint_axis_y} ${joint_axis_z}" />
+    <limit lower="${joint_limit_lower}" upper="${joint_limit_upper}" effort="${joint_limit_effort}" velocity="${joint_limit_velocity}" />
+  </joint>
+
+  <gazebo reference="${part_name}_joint">
+    <implicitSpringDamper>true</implicitSpringDamper>
+  </gazebo>
+
+</robot>
